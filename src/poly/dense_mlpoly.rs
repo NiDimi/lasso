@@ -94,6 +94,10 @@ impl<F: PrimeField> DensePolynomial<F> {
     self.len
   }
 
+  pub fn get_z(&self) -> &Vec<F> {
+    &self.Z
+  }
+
   pub fn clone(&self) -> Self {
     Self::new(self.Z[0..self.len].to_vec())
   }
