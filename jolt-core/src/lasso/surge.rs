@@ -479,7 +479,7 @@ where
     Instruction: JoltInstruction + Default,
 {
     _instruction: PhantomData<Instruction>,
-    materialized_subtables: Vec<Vec<F>>,
+    pub materialized_subtables: Vec<Vec<F>>,
 }
 
 #[allow(clippy::type_complexity)]
@@ -674,7 +674,7 @@ where
     }
 
     #[tracing::instrument(skip_all, name = "Surge::construct_polys")]
-    fn construct_polys(
+    pub fn construct_polys(
         preprocessing: &SurgePreprocessing<F, Instruction, C, M>,
         ops: &[Instruction],
     ) -> SurgePolys<F, PCS> {
