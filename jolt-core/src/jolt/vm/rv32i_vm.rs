@@ -74,7 +74,7 @@ macro_rules! subtable_enum {
 
         impl<F: JoltField> From<$enum_name<F>> for usize {
             fn from(subtable: $enum_name<F>) -> usize {
-                unsafe { *<*const _>::from(&subtable).cast::<usize>() }
+                unsafe { *<*const $enum_name<F>>::from(&subtable).cast::<usize>() }
             }
         }
         impl<F: JoltField> JoltSubtableSet<F> for $enum_name<F> {}

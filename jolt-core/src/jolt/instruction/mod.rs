@@ -74,7 +74,7 @@ pub trait JoltInstructionSet:
     JoltInstruction + IntoEnumIterator + EnumCount + for<'a> TryFrom<&'a ELFInstruction> + Send + Sync
 {
     fn enum_index(instruction: &Self) -> usize {
-        unsafe { *<*const _>::from(instruction).cast::<u8>() as usize }
+        unsafe { *<*const Self>::from(instruction).cast::<u8>() as usize }
     }
 }
 
